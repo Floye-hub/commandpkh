@@ -83,6 +83,9 @@ public class CommandPKH implements ModInitializer {
 			HomeCommand.register(dispatcher);
 			DelHomeCommand.register(dispatcher);
 			RtpCommand.register(dispatcher);
+			SetSpawnCommand.register(dispatcher);
+			SpawnCommand.register(dispatcher);
+			CityCommand.register(dispatcher);
 		});
 	}
 }
