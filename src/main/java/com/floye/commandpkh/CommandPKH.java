@@ -2,6 +2,7 @@ package com.floye.commandpkh;
 
 import com.floye.commandpkh.commands.*;
 import com.floye.commandpkh.data.AventurePositionStorage;
+import com.floye.commandpkh.data.HomePositionStorage;
 import com.floye.commandpkh.util.FirstJoinManager;
 import com.floye.commandpkh.util.TeleportHelper;
 import net.fabricmc.api.ModInitializer;
@@ -33,6 +34,7 @@ public class CommandPKH implements ModInitializer {
 		AventurePositionStorage.load();
 		registerCommands();
 		MondeCommand.register();
+		HomePositionStorage.load();
 		TPTuto.register();
 		CommandRegistrationCallback.EVENT.register(TpaCommand::register);
 		CommandRegistrationCallback.EVENT.register(TpaHereCommand::register);
@@ -77,6 +79,10 @@ public class CommandPKH implements ModInitializer {
 					.executes(new RankupApprentiCommand()));
 			dispatcher.register(CommandManager.literal("TotalCapture")
 					.executes(new TotalCaptureCommand()));
+			SetHomeCommand.register(dispatcher);
+			HomeCommand.register(dispatcher);
+			DelHomeCommand.register(dispatcher);
+			RtpCommand.register(dispatcher);
 		});
 	}
 }
