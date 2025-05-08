@@ -61,4 +61,17 @@ public class EconomyHandler {
         EconomyTransaction transaction = account.withdraw(bigAmount);
         return transaction.result() == EconomyResultType.SUCCESS;
     }
+
+    /**
+     * Tente de retirer un montant du compte.
+     * @param account le compte
+     * @param amount le montant
+     * @return true si le retrait réussi, false sinon (fonds insuffisants)
+     */
+    public static boolean tryRemove(Account account, double amount){
+        if(getBalance(account) >= amount){
+            return remove(account, amount);
+        }
+        return false;
+    }
 }
